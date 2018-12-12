@@ -1,0 +1,186 @@
+html, body {
+    background: #eff3f6;
+    width: 100%;
+    height: 100%;
+}
+#background {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    background: #fefefe;
+    border: 2px solid #C3D4DB;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: rgba(0,0,0,0.15) 0 0 1px;
+    -webkit-box-shadow: rgba(0,0,0,0.15) 0 0 1px;
+    box-shadow: rgba(0,0,0,0.15) 0 0 1px;
+    color: #444;
+    margin: 0 auto 30px;
+    overflow: hidden;
+}
+.box.login {
+    height: 234px;
+    width: 332px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -117px 0 0 -166px;
+}
+.boxBody {
+    background: #fefefe;
+    border: 0;
+    border-bottom: 1px solid #dde0e8;
+    padding: 10px 20px;
+    height: 136px;
+}
+
+.boxBody div {
+    margin-top: 20px;
+}
+
+.box footer {
+    border-top: 1px solid #fff;
+    overflow: hidden;
+    height: 32px;
+    background: #29d072; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #29d072 1%, #35cc73 28%, #35cc73 28%, #53cc83 53%, #35cc73 77%, #29d369 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #29d072 1%,#35cc73 28%,#35cc73 28%,#53cc83 53%,#35cc73 77%,#29d369 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #29d072 1%,#35cc73 28%,#35cc73 28%,#53cc83 53%,#35cc73 77%,#29d369 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#29d072', endColorstr='#29d369',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.box label {
+    display: block;
+    margin: 3px 0px 0px 24px;
+}
+.box footer input[type=checkbox] {
+    vertical-align: sub;
+    *vertical-align: middle;
+    margin-right: 10px;
+}
+.box input[type=text], .box input[type=password], .txtField, .cjComboBox {
+    border: 1px solid #C3D4DB;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin: 3px 0 4px;
+    outline: none;
+    border: none;
+    height: 36px;
+    width: 235px;
+}
+.box input[type=text]:focus, .box input[type=password]:focus, .txtField:focus, .cjComboBox:focus {
+    outline: none;
+    border: none;
+    color: #333;
+}
+.cjComboBox {
+    width: 294px;
+}
+.cjComboBox.small {
+    padding: 3px 2px 3px 6px;
+    width: 100px;
+    border-width: 3px !important;
+}
+.txtField.small {
+    padding: 3px 6px;
+    width: 200px;
+    border-width: 3px !important;
+}
+
+.box a {
+    color: #999;
+}
+.box a:hover, .box a:focus {
+    text-decoration: underline;
+}
+.box a:active {
+    color: #f84747;
+}
+#loginFooter {
+    position: relative;
+    height: 76px;
+    width: 332px;
+}
+.msg {
+    width: 160px;
+    height: 20px;
+    word-wrap: break-word;
+    color: red;
+}
+.btnLogin {
+    margin: 0 auto;
+    display: block;
+    font-family: Microsoft JhengHei;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+#mainFooter {
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
+    height: 55px;
+    background: #ffffff;
+    /* margin-top: 8px; */
+}
+
+#mainFooter a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+#mainFooter a:hover {
+    color: #23527c;;
+}
+
+#loginContent {
+    position: absolute;
+    top: 12%;
+    width: 100%;
+}
+
+.box.login {
+    height: 234px;
+    width: 332px;
+    position: relative;
+    margin: 0px auto;
+    left: 0%;
+    top: 0%;
+    border-radius: 10px;
+}
+.sysTitle {
+    height: 60px;
+}
+
+.sysTitle img{
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+}
+
+.sysImage {
+    height: 115px;
+}
+
+.sysImage img{
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+}
+
+#separate {
+    background: #29d072; /* Old browsers */
+    background: -moz-linear-gradient(90deg, #abfa9d 5%,#35cc73 28%,#35cc73 28%,#53cc83 53%,#35cc73 77%,#0dd257 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(90deg, #abfa9d 5%,#35cc73 28%,#35cc73 28%,#53cc83 53%,#35cc73 77%,#0dd257 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(90deg, #abfa9d 5%,#35cc73 28%,#35cc73 28%,#53cc83 53%,#35cc73 77%,#0dd257 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}

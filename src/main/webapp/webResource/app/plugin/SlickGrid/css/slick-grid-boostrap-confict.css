@@ -1,0 +1,29 @@
+.slick-header-columns, .slick-headerrow-columns {
+  -webkit-box-sizing: content-box !important; /* Add */
+  -moz-box-sizing: content-box !important;    /* Add */
+  box-sizing: content-box !important;         /* Add */
+  position: relative;
+  white-space: nowrap;
+  cursor: default;
+  overflow: hidden;
+}
+
+.slick-header-column.ui-state-default {
+  -webkit-box-sizing: content-box !important; /* Add */
+  -moz-box-sizing: content-box !important;    /* Add */
+  box-sizing: content-box !important;         /* Add */
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  height: 16px;
+  line-height: 16px;
+  margin: 0;
+  padding: 4px;
+  border-right: 1px solid silver;
+  border-left: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+  float: left;
+}

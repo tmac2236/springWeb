@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:lang="http://www.springframework.org/schema/lang" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task" xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+    http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd
+    http://www.springframework.org/schema/data/repository
+    http://www.springframework.org/schema/data/repository/spring-repository-1.8.xsd"
+	xmlns:repository="http://www.springframework.org/schema/data/repository">
+
+	<!-- 排程器
+		<task:annotation-driven scheduler="taskScheduler" executor="taskExecutor" />
+		<task:executor id="taskExecutor" pool-size="10-30" keep-alive="300" queue-capacity="100" />
+		<task:scheduler id="taskScheduler" pool-size="10" />
+	-->
+	<!-- Controller 返回值的編碼設定 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<!-- defualt : ISO-8859-1 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+			<!-- defualt : UTF-8 -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+		</mvc:message-converters>
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver" />
+		</mvc:argument-resolvers>
+
+	</mvc:annotation-driven>
+
+	<!-- 通知Spring掃描指定套件內，是否有被相關Annotation設定為@Component的類別自動註冊到Spring容器 -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.journaldev.spring.**,com.journaldev.web.**,com.journaldev.crawl.**" />
+
+	<!--靜態資源處理 resources mapping -->
+	<mvc:resources mapping="/app/**" location="/webResource/app/" />
+	<mvc:resources mapping="/js/**" location="/webResource/js/" />
+	<mvc:resources mapping="/css/**" location="/webResource/css/" />
+	<mvc:resources mapping="/images/**" location="/webResource/images/" />
+	<mvc:resources mapping="/icTurn-images/**" location="${ICTURN_FILE2}" />
+	<mvc:resources mapping="/aj-images/**" location="${AJ_DIR_STATIC_PATH}" />
+	<mvc:resources mapping="/files/**" location="/webResource/files/" />
+	<mvc:resources mapping="/plugin/**" location="/webResource/plugin/" />
+
+	<!--攔截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 攔截所有請求，必須寫在最上面 -->
+			<mvc:mapping path="/**" />
+			<!-- 例外 -->
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/logout" />
+			<mvc:exclude-mapping path="/app/**" />
+			<mvc:exclude-mapping path="/js/**" />
+			<mvc:exclude-mapping path="/css/**" />
+			<mvc:exclude-mapping path="/images/**" />
+			<mvc:exclude-mapping path="/files/**" />
+			<mvc:exclude-mapping path="/plugin/**" />
+			<mvc:exclude-mapping path="/errors/**" />
+			<bean class="com.journaldev.web.auth.session.SessionCheckInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<bean id="contentNegotiatingViewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager">
+			<bean class="org.springframework.web.accept.ContentNegotiationManager">
+				<constructor-arg>
+					<bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+						<constructor-arg>
+							<map>
+								<entry key="html" value="text/html" />
+								<entry key="pdf" value="application/pdf" />
+								<entry key="doc" value="application/msword" />
+								<entry key="docx" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+								<entry key="xsl" value="application/vnd.ms-excel" />
+								<entry key="xslx" value="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+								<entry key="xml" value="application/xml" />
+								<entry key="json" value="application/json" />
+								<entry key="atom" value="application/xml" />
+							</map>
+						</constructor-arg>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
+					<property name="prefix" value="/WEB-INF/views/" />
+					<property name="suffix" value=".jsp" />
+					<property name="order" value="1" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+    <!-- 例外重導頁面設定 -->
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">errors/500</prop>
+			</props>
+		</property>
+		<property name="warnLogCategory" value="WARN"></property>
+		<property name="defaultErrorView" value="errors/500" />
+	</bean>
+
+	<import resource="db.xml" />
+
+</beans>
