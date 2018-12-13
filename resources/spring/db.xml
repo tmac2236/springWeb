@@ -8,7 +8,7 @@
    	    http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.8.xsd"
    	xmlns:repository="http://www.springframework.org/schema/data/repository">
 	<!-- DAO Home -->
-	<jpa:repositories base-package="com.journaldev.spring.**,com.journaldev.crawl.**,com.journaldev.web.**" />
+	<jpa:repositories base-package="com.tmac2236.spring.**,com.tmac2236.crawl.**,com.tmac2236.web.**" />
 	
 	<!-- Data Resource -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
@@ -36,9 +36,9 @@
 		<property name="persistenceUnitName" value="appPersistenceUnit" />
 		<property name="packagesToScan">
 			<list>
-			    <value>com.journaldev.crawl.entity.**</value>
-				<value>com.journaldev.spring.entity.**</value>
-                <value>com.journaldev.web.auth.entity.**</value>
+			    <value>com.tmac2236.crawl.entity.**</value>
+				<value>com.tmac2236.spring.entity.**</value>
+                <value>com.tmac2236.web.auth.entity.**</value>
 			</list>
 		</property>
 		<property name="jpaVendorAdapter">

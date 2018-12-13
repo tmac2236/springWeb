@@ -39,7 +39,7 @@
 
 	<!-- 通知Spring掃描指定套件內，是否有被相關Annotation設定為@Component的類別自動註冊到Spring容器 -->
 	<context:annotation-config />
-	<context:component-scan base-package="com.journaldev.spring.**,com.journaldev.web.**,com.journaldev.crawl.**" />
+	<context:component-scan base-package="com.tmac2236.spring.**,com.tmac2236.web.**,com.tmac2236.crawl.**" />
 
 	<!--靜態資源處理 resources mapping -->
 	<mvc:resources mapping="/app/**" location="/webResource/app/" />
@@ -66,7 +66,7 @@
 			<mvc:exclude-mapping path="/files/**" />
 			<mvc:exclude-mapping path="/plugin/**" />
 			<mvc:exclude-mapping path="/errors/**" />
-			<bean class="com.journaldev.web.auth.session.SessionCheckInterceptor"></bean>
+			<bean class="com.tmac2236.web.auth.session.SessionCheckInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

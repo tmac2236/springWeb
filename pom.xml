@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.journaldev.spring.mvc</groupId>
+	<groupId>com.tmac2236.spring.mvc</groupId>
 	<artifactId>spring-mvc-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Spring MVC Example</name>
@@ -111,6 +111,13 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- UUID -->
 		<dependency>
 			<groupId>de.huxhorn.sulky</groupId>
@@ -129,6 +136,13 @@
 			<artifactId>antisamy</artifactId>
 			<version>1.5.3</version>
 		</dependency>
+		<!--Jsoup https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -165,18 +179,18 @@
 			<url>http://beardedgeeks.googlecode.com/svn/repository/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
-<!-- 	<repositories>
+	<!-- <repositories>
 		<repository>
-			<id></id>
-			<name></name>
-			<url>http://192.168</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+		<id></id>
+		<name></name>
+		<url>http://192.168</url>
+		<releases>
+		<enabled>true</enabled>
+		</releases>
+		<snapshots>
+		<enabled>true</enabled>
+		</snapshots>
 		</repository>
-	</repositories>
- -->	
+		</repositories>
+	-->
 </project>
