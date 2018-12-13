@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  *
  */
 public class JSONUtil {
-	//private static Logger logger = LoggerFactory.getLogger(JSONUtil.class);
+	private static Logger logger = LoggerFactory.getLogger(JSONUtil.class);
 	private static ObjectMapper mapper = new ObjectMapper().configure(Feature.ALLOW_COMMENTS, true);
 
 	/**
@@ -50,7 +50,7 @@ public class JSONUtil {
         try {
             data = mapper.readValue(JSONUtil.class.getResource(filePath), type);
         } catch (Exception e) {
-//            logger.warn("error in parseJSON to object!", e);
+            logger.warn("error in parseJSON to object!", e);
         }
         return data;
     }
@@ -71,7 +71,7 @@ public class JSONUtil {
 		try {
 			data = mapper.readValue(jsonPacket, type);
 		} catch (Exception e) {
-//			logger.warn("error in parseJSON to object!", e);
+			logger.warn("error in parseJSON to object!", e);
 		    System.out.println(e);
 		}
 		return data;
@@ -85,7 +85,7 @@ public class JSONUtil {
 		try {
 			root = mapper.readTree(jsonPacket);
 		} catch (Exception e) {
-//			logger.warn("error in parseJSON to JsonNode!", e);
+			logger.warn("error in parseJSON to JsonNode!", e);
 		}
 
 		return root;
@@ -101,7 +101,7 @@ public class JSONUtil {
 		try {
 			root = mapper.readTree(jsonPacket);
 		} catch (Exception e) {
-//			logger.warn("error in parseJSON to ObjectNode!", e);
+			logger.warn("error in parseJSON to ObjectNode!", e);
 		}
 
 		if (root != null && root.isObject()) {
@@ -123,7 +123,7 @@ public class JSONUtil {
 		try {
 			root = mapper.readTree(jsonPacket);
 		} catch (Exception e) {
-//			logger.warn("error in parseJSON to ArrayNode!", e);
+			logger.warn("error in parseJSON to ArrayNode!", e);
 		}
 
 		if (root != null && root.isArray()) {
@@ -144,7 +144,7 @@ public class JSONUtil {
         try {
             json = mapper.writeValueAsString(bean);
         } catch (Exception e) {
-//            logger.warn("error in format object to JSON!", e);
+            logger.warn("error in format object to JSON!", e);
         }
 
         return json;
